@@ -34,3 +34,5 @@ app.get('/projects', (req, res) => {
 app.listen(3000, function() {
   console.log('Vili API running on http://localhost:3000');
 });
+
+module.exports = app;
