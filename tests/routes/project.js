@@ -1,18 +1,13 @@
-import app from '../app';
 import test from 'ava';
 import express from 'express';
+import mockgoose from 'mockgoose';
+import mongoose from 'mongoose';
 import request from 'supertest-as-promised';
 
+import app from '../../app';
+import { db } from '../../config';
+import { Project } from '../../app/models';
 
-test('foo', t => {
-  t.pass();
-});
-
-test('bar', async t => {
-  const bar = Promise.resolve('bar');
-
-  t.is(await bar, 'bar');
-});
 
 test('get projects:success', async t => {
   t.plan(2);

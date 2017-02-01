@@ -1,7 +1,16 @@
 'use strict';
 
-const express = require('express');
+import express from 'express';
+import mongoose from 'mongoose';
+import { db } from '../config';
+import projectsRoute from './routes/projects';
+
+
+/*
+ * Setup
+ */
 const app = express();
+mongoose.connect(db.url);
 
 
 /*
@@ -13,26 +22,15 @@ app.get('/', (req, res) => {
 
 
 /*
- * Project Routes
+ * Routes
  */
-app.get('/projects', (req, res) => {
-  res.json({
-    data: [{
-      id: 1,
-      name: 'project one',
-    }, {
-      id: 2,
-      name: 'project two',
-    }]
-  });
-});
+app.use('/projects', projectsRoute);
+//app.use('/times', time);
+//app.use('/users', user);
 
 
 /*
- * Start Server
+ * Export
  */
-app.listen(3000, function() {
-  console.log('Vili API running on http://localhost:3000');
-});
-
 module.exports = app;
+

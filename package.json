@@ -2,9 +2,10 @@
   "name": "vili-api",
   "version": "0.0.0",
   "description": "a simple timer",
+  "repository": "https://github.com/zachfedor/vili-api",
   "main": "app/index.js",
   "scripts": {
-    "start": "nodemon app/index.js --exec babel-node --presets es2015",
+    "start": "nodemon server.js --exec babel-node --presets es2015",
     "build": "babel app -d dist",
     "preserve": "npm run build",
     "serve": "node dist/index.js",
@@ -13,7 +14,9 @@
   "author": "zachfedor",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "mongodb": "^2.2.10",
+    "mongoose": "^4.6.4"
   },
   "devDependencies": {
     "ava": "^0.16.0",
@@ -23,16 +26,20 @@
     "babel-preset-es2015": "^6.16.0",
     "babel-preset-stage-2": "^6.17.0",
     "babel-register": "^6.16.3",
+    "mockgoose": "^6.0.8",
     "nodemon": "^1.11.0",
     "supertest": "^2.0.0",
     "supertest-as-promised": "^4.0.0"
   },
   "ava": {
     "files": [
-      "tests/*.js"
+      "tests/**/*.js"
     ],
     "source": [
-      "app/*.js"
+      "app/**/*.js"
+    ],
+    "require": [
+      "babel-register"
     ],
     "babel": "inherit"
   }
